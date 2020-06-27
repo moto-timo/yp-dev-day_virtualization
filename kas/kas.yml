@@ -1,0 +1,88 @@
+# Every file needs to contain a header, that provides kas with information
+# about the context of this file.
+header:
+  # The `version` entry in the header describes for which configuration
+  # format version this file was created. It is used by kas to figure
+  # out if it is compatible with this file. The version is an integer that
+  # is increased on every format change.
+  version: 8
+# The machine as it is written into the `local.conf` of bitbake.
+machine: qemux86-64
+
+# core-image-mimnimal is too limiting
+target: core-image-base
+
+# The distro name as it is written into the `local.conf` of bitbake.
+distro: poky
+
+repos:
+  # Include local layer (e.g. conf/layer.conf)
+  meta-custom:
+
+  # Here we include a list of layers from the poky repository to add
+  # to bblayers.conf:
+  poky:
+    url: "https://git.yoctoproject.org/git/poky"
+    refspec: master
+    layers:
+      meta:
+      meta-poky:
+      meta-yocto-bsp:
+
+  meta-intel:
+    url: "https://git.yoctoproject.org/git/meta-intel"
+    refspec: master
+
+  meta-openembedded:
+    url: "https://git.openembedded.org/meta-openembedded"
+    refspec: master
+    layers:
+      meta-oe:
+      meta-filesystems:
+      meta-networking:
+      meta-perl:
+      meta-python:
+
+  meta-acrn:
+    url: "https://github.com/intel/meta-acrn.git"
+    refspec: master
+
+  meta-virtualization:
+    url: "https://git.yoctoproject.org/git/meta-virtualization"
+    refspec: master
+
+  meta-cloud-services:
+    url: "https://git.yoctoproject.org/git/meta-cloud-services"
+    refspec: master
+
+  meta-security:
+    url: "https://git.yoctoproject.org/git/meta-security"
+    refspec: master
+
+bblayers_conf_header:
+  standard: |
+    POKY_BBLAYERS_CONF_VERSION = "2"
+    BBPATH = "${TOPDIR}"
+    BBFILES ?= ""
+
+local_conf_header:
+  standard: |
+    CONF_VERSION = "1"
+
+  debug-tweaks: |
+    EXTRA_IMAGE_FEATURES = "debug-tweaks"
+
+  diskmon: |
+    BB_DISKMON_DIRS = "\
+        STOPTASKS,${TMPDIR},1G,100K \
+        STOPTASKS,${DL_DIR},1G,100K \
+        STOPTASKS,${SSTATE_DIR},1G,100K \
+        STOPTASKS,/tmp,100M,100K \
+        ABORT,${TMPDIR},100M,1K \
+        ABORT,${DL_DIR},100M,1K \
+        ABORT,${SSTATE_DIR},100M,1K \
+        ABORT,/tmp,10M,1K"
+
+  distro_features: |
+    DISTRO_FEATURES_append = " virtualization"
+

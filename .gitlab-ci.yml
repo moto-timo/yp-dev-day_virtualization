@@ -1,0 +1,7 @@
+image: kasproject/kas:latest
+
+core-image-base:
+  stage: build
+  script:
+    - kas build kas/kas.yml
+
