@@ -1,0 +1,25 @@
+header:
+  version: 2
+  includes:
+    - kas-intel.yml
+
+distro: acrn-demo-sos
+
+target:
+  - multiconfig:uos:core-image-base
+  - acrn-image-base
+
+local_conf_header:
+  tmp_acrn_sos: |
+    TMPDIR = "${TOPDIR}/tmp-acrn-sos"
+  sos_kernel: |
+    PREFERRED_PROVIDER_virtual/kernel = "linux-intel-acrn-sos"
+  The packages-from-images recipe needs to know where images are: |
+    CONTAINER_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-acrn-uos/deploy/images/${MACHINE}"
+    CONTAINER_PACKAGE_MC = "uos"
+  Add core-image-base-package to acrn-image-base: |
+    IMAGE_INSTALL_append_pn-acrn-image-base = " core-image-base-package"
+  libvirt_provider: |
+    PREFERRED_RPROVIDER_libvirt = "acrn-libvirt"
+    PREFERRED_RPROVIDER_libvirt-virsh = "acrn-libvirt"
+    PREFERRED_RPROVIDER_libvirt-libvirtd = "acrn-libvirt"
