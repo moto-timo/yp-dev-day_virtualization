@@ -1,0 +1,12 @@
+header:
+  version: 2
+  includes:
+    - kas-intel.yml
+
+local_conf_header:
+  distro_features: |
+    DISTRO_FEATURES_append = " virtualization kvm"
+  libvirt_provider: |
+    PREFERRED_RPROVIDER = "libvirt"
+  kvm_host_tools: |
+    IMAGE_INSTALL_append = " packagegroup-kvm-host"
