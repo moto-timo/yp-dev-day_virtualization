@@ -3,5 +3,5 @@ image: kasproject/kas:latest
 core-image-base:
   stage: build
   script:
-    - kas build kas/kas.yml
+    - kas build kas/kas-intel-kvm-ubuntu.yml
 
