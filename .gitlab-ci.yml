@@ -4,4 +4,5 @@ core-image-base:
   stage: build
   script:
     - kas build kas/kas-intel-kvm-ubuntu.yml
+    - kas build kas/kas-intel-acrn.yml
 
