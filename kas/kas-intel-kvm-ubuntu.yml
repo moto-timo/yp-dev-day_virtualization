@@ -1,0 +1,8 @@
+header:
+  version: 2
+  includes:
+    - kas-intel-kvm.yml
+
+local_conf_header:
+  ubuntu_cloud_image: |
+    IMAGE_INSTALL_append = " ubuntu-kvm-image-package"
