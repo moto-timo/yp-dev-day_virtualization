@@ -4,9 +4,11 @@ header:
     - kas-intel.yml
 
 local_conf_header:
-  distro_features: |
-    DISTRO_FEATURES_append = " virtualization kvm"
+  distro_features_kvm: |
+    DISTRO_FEATURES_append = " kvm"
   libvirt_provider: |
-    PREFERRED_RPROVIDER = "libvirt"
+    PREFERRED_RPROVIDER_libvirt = "libvirt"
+    PREFERRED_RPROVIDER_libvirt-virsh = "libvirt"
+    PREFERRED_RPROVIDER_libvirt-libvirtd = "libvirt"
   kvm_host_tools: |
     IMAGE_INSTALL_append = " packagegroup-kvm-host"
