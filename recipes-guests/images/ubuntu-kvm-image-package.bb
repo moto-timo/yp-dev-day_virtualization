@@ -16,7 +16,7 @@ VESSEL_PAYLOAD_NAME = "${UBUNTU_IMAGE_NAME}"
 SRC_URI = "${UBUNTU_BASE_URL}/${UBUNTU_RELEASE}/${UBUNTU_IMAGE_DATE}/${UBUNTU_IMAGE_NAME}"
 SHA256SUMS_URI = "${UBUNTU_BASE_URL}/${UBUNTU_RELEASE}/${UBUNTU_IMAGE_DATE}/SHA256SUMS"
 
-# Sse  http://www.burtonini.com/blog/2017/06/13/dynamic-source-checksums
+# See  http://www.burtonini.com/blog/2017/06/13/dynamic-source-checksums
 do_fetch[prefuncs]  += "fetch_checksums"
 
 python fetch_checksums() {
