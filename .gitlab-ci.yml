@@ -1,8 +1,17 @@
 image: kasproject/kas:latest
 
-core-image-base:
+xen-raspberry-pi4:
   stage: build
   script:
-    - kas build kas/kas-intel-kvm-ubuntu.yml
+    - kas build kas/kas-xen-raspberry-pi4.yml
+
+intel-kvm-ubuntu:
+  stage: build
+  script:
+    - kas build kas/kas-intel-acrn.yml
+
+intel-acrn:
+  stage: build
+  script:
     - kas build kas/kas-intel-acrn.yml
 
