@@ -1,0 +1,19 @@
+header:
+  version: 2
+  includes:
+    - kas.yml
+
+machine: raspberrypi4-64
+
+local_conf_header:
+  xen_distro_features: |
+      DISTRO_FEATURES_append = " xen"
+  bb_number_threads: |
+    BB_NUMBER_THREADS ?= "8"
+  parallel_make: |
+    PARALLEL_MAKE ?= "-j 8"
+  qemu_targets: |
+    QEMU_TARGETS = "i386 x86_64 aarch64 arm"
+  package_config_remove_sdl: |
+     PACKAGECONFIG_remove_pn-qemu += " sdl"
+
