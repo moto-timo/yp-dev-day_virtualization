@@ -8,7 +8,7 @@ xen-raspberry-pi4:
 intel-kvm-ubuntu:
   stage: build
   script:
-    - kas build kas/kas-intel-acrn.yml
+    - kas build kas/kas-intel-kvm-ubuntu.yml
 
 intel-acrn:
   stage: build
