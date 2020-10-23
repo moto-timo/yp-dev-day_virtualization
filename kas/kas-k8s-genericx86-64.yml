@@ -1,0 +1,6 @@
+header:
+  version: 2
+  includes:
+    - kas-k8s.yml
+
+machine: genericx86-64
