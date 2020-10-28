@@ -5,9 +5,16 @@ header:
 
 machine: raspberrypi4-64
 
+target:
+   - multiconfig:xen-guest:xen-guest-image-minimal
+   - xen-image-minimal
 local_conf_header:
+  tmp_xen_host: |
+    TMPDIR = "${TOPDIR}/tmp-xen-host"
+  image_fstypes: |
+    IMAGE_FSTYPES_append = " wic wic.bmap"
   xen_distro_features: |
-      DISTRO_FEATURES_append = " xen"
+    DISTRO_FEATURES_append = " xen"
   bb_number_threads: |
     BB_NUMBER_THREADS ?= "8"
   parallel_make: |
@@ -15,5 +22,9 @@ local_conf_header:
   qemu_targets: |
     QEMU_TARGETS = "i386 x86_64 aarch64 arm"
   package_config_remove_sdl: |
-     PACKAGECONFIG_remove_pn-qemu += " sdl"
-
+    PACKAGECONFIG_remove_pn-qemu += " sdl"
+  The packages-from-images recipe needs to know where images are: |
+    VESSEL_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-xen-guest/deploy/images/${MACHINE}"
+    VESSEL_PACKAGE_MC = "xen-guest"
+  Add xen-guest-image-minal-package to xen-host core-image-base: |
+    IMAGE_INSTALL_append_pn-xen-image-minimal = " xen-guest-image-minimal-package"
