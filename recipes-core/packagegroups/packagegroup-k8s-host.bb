@@ -4,7 +4,7 @@ inherit packagegroup
 
 RDEPENDS_${PN} = "\
     conntrack-tools \
-    docker-ce \
+    virtual/runc \
     kubernetes \
     virtual/containerd \
     "
