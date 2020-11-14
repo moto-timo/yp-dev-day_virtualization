@@ -23,7 +23,7 @@ repos:
   # to bblayers.conf:
   poky:
     url: "https://git.yoctoproject.org/git/poky"
-    refspec: master
+    refspec: gatesgarth
     layers:
       meta:
       meta-poky:
@@ -31,11 +31,11 @@ repos:
 
   meta-intel:
     url: "https://git.yoctoproject.org/git/meta-intel"
-    refspec: master
+    refspec: gatesgarth
 
   meta-openembedded:
     url: "https://git.openembedded.org/meta-openembedded"
-    refspec: master
+    refspec: gatesgarth
     layers:
       meta-oe:
       meta-filesystems:
@@ -45,23 +45,27 @@ repos:
 
   meta-acrn:
     url: "https://github.com/intel/meta-acrn.git"
-    refspec: master
+    refspec: gatesgarth
 
   meta-virtualization:
     url: "https://git.yoctoproject.org/git/meta-virtualization"
-    refspec: master
+    refspec: gatesgarth
 
   meta-cloud-services:
     url: "https://git.yoctoproject.org/git/meta-cloud-services"
-    refspec: master
+    refspec: gatesgarth
 
   meta-security:
     url: "https://git.yoctoproject.org/git/meta-security"
-    refspec: master
+    refspec: gatesgarth
+
+  meta-selinux:
+    url: "https://git.yoctoproject.org/git/meta-selinux"
+    refspec: gatesgarth
 
   meta-raspberrypi:
     url: "https://git.yoctoproject.org/git/meta-raspberrypi"
-    refspec: master
+    refspec: gatesgarth
 
 bblayers_conf_header:
   standard: |
