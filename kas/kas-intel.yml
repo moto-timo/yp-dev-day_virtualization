@@ -7,7 +7,7 @@ machine: intel-corei7-64
 
 local_conf_header:
   intel_kernel: |
-    PREFERRED_PROVIDER_virtual/kernel = "linux-intel"
+    PREFERRED_PROVIDER_virtual/kernel = "linux-intel-dev"
 
   systemd_config: |
     DISTRO_FEATURES_append = " systemd"
