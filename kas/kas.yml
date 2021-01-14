@@ -48,8 +48,8 @@ repos:
     refspec: master
 
   meta-virtualization:
-    url: "https://git.yoctoproject.org/git/meta-virtualization"
-    refspec: master
+    url: "https://github.com/moto-timo/meta-virtualization"
+    refspec: timo/cri-o_1.20
 
   meta-cloud-services:
     url: "https://git.yoctoproject.org/git/meta-cloud-services"
