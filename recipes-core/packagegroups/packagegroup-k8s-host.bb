@@ -5,6 +5,7 @@ inherit packagegroup
 RDEPENDS_${PN} = "\
     conntrack-tools \
     cri-o \
+    crictl \
     virtual/runc \
     kubernetes \
     virtual/containerd \
