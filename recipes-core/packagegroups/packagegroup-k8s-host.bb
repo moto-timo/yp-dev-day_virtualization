@@ -8,6 +8,7 @@ RDEPENDS_${PN} = "\
     cri-o \
     crictl \
     kubernetes \
+    podman \
     tzdata \
     virtual/containerd \
     virtual/runc \
