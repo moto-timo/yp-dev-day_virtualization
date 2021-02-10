@@ -49,7 +49,7 @@ repos:
 
   meta-virtualization:
     url: "https://github.com/moto-timo/meta-virtualization"
-    refspec: timo/cri-o_1.20
+    refspec: timo/cri-tools
 
   meta-cloud-services:
     url: "https://git.yoctoproject.org/git/meta-cloud-services"
