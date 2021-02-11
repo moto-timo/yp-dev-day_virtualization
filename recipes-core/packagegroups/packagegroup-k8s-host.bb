@@ -7,7 +7,7 @@ RDEPENDS_${PN} = "\
     conntrack-tools \
     cri-o \
     crictl \
-    kernel-module-configs \
+    kernel-devsrc \
     kubernetes \
     podman \
     tzdata \
