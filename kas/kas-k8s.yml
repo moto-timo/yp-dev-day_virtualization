@@ -21,11 +21,12 @@ local_conf_header:
     NETWORK_MANAGER = "systemd"
     # IMAGE_ROOTFS_EXTRA_SPACE is in KBytes
     IMAGE_ROOTFS_EXTRA_SPACE = "8192000"
-  k8s_host_kernel: |
-    DISTRO_FEATURES_append = " k8s"
-    KERNEL_FEATURES_append = "features/hugetlb/hugetlb.scc"
-    PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-dev"
+  k8s_common_crio: |
+    DISTRO_FEATURES_append = " k8s seccomp"
     APPEND += "cgroup_enable=memory cgroup_memory=1"
+  k8s_host_kernel: |
+    #KERNEL_FEATURES_append = "features/hugetlb/hugetlb.scc"
+    PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-dev"
   image_install: |
     PREFERRED_PROVIDER_virtual/containerd = "containerd-opencontainers"
     IMAGE_INSTALL_append = " packagegroup-k8s-host"
