@@ -7,5 +7,6 @@ machine: raspberrypi4-64
 
 local_conf_header:
   k8s_host_kernel: |
+    DISTRO_FEATURES_append = " k8s"
     KERNEL_FEATURES_append = "features/hugetlb/hugetlb.scc"
     PREFERRED_PROVIDER_virtual/kernel = "linux-raspberrypi-dev"
