@@ -10,3 +10,4 @@ local_conf_header:
     DISTRO_FEATURES_append = " k8s"
     KERNEL_FEATURES_append = "features/hugetlb/hugetlb.scc"
     PREFERRED_PROVIDER_virtual/kernel = "linux-raspberrypi-dev"
+    APPEND += "cgroup_enable=memory cgroup_memory=1"
