@@ -22,9 +22,10 @@ local_conf_header:
     # IMAGE_ROOTFS_EXTRA_SPACE is in KBytes
     IMAGE_ROOTFS_EXTRA_SPACE = "8192000"
   k8s_common_crio: |
-    DISTRO_FEATURES_append = " k8s seccomp"
+    DISTRO_FEATURES_append = " ipv6 k8s seccomp"
     APPEND += "cgroup_enable=memory cgroup_memory=1"
   k8s_host_kernel: |
+    # timo/cri-tools branch enables hugetlb with k8s in DISTRO_FEATURES
     #KERNEL_FEATURES_append = "features/hugetlb/hugetlb.scc"
     PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-dev"
   image_install: |
