@@ -28,6 +28,10 @@ local_conf_header:
     # timo/cri-tools branch enables hugetlb with k8s in DISTRO_FEATURES
     #KERNEL_FEATURES_append = "features/hugetlb/hugetlb.scc"
     PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-dev"
+  iptables_packageconfig: |
+    # These recipes come from meta-networking which is already a layer
+    # dependency for meta-virtualization
+    PACKAGECONFIG_append_pn-iptables = " libnfnetlink libnftnl"
   image_install: |
     PREFERRED_PROVIDER_virtual/containerd = "containerd-opencontainers"
     IMAGE_INSTALL_append = " packagegroup-k8s-host"
