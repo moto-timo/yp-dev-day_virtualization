@@ -14,7 +14,7 @@ local_conf_header:
   tmp_k8s_host: |
     TMPDIR = "${TOPDIR}/tmp-k8s-host"
   systemd_config: |
-    DISTRO_FEATURES_append = " systemd"
+    DISTRO_FEATURES:append = " systemd"
     VIRTUAL-RUNTIME_init_manager = "systemd"
     DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
     VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
@@ -22,8 +22,8 @@ local_conf_header:
     # IMAGE_ROOTFS_EXTRA_SPACE is in KBytes
     IMAGE_ROOTFS_EXTRA_SPACE = "8192000"
   k8s_host_kernel: |
-    KERNEL_FEATURES_append = "features/hugetlb/hugetlb.scc"
+    KERNEL_FEATURES:append = "features/hugetlb/hugetlb.scc"
     PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-dev"
   image_install: |
     PREFERRED_PROVIDER_virtual/containerd = "containerd-opencontainers"
-    IMAGE_INSTALL_append = " packagegroup-k8s-host"
+    IMAGE_INSTALL:append = " packagegroup-k8s-host"

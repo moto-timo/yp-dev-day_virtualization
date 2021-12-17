@@ -2,7 +2,7 @@ SUMMARY = "Provides a set of tools for hosting k8s and container guests"
 
 inherit packagegroup
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
     conntrack-tools \
     virtual/runc \
     kubernetes \

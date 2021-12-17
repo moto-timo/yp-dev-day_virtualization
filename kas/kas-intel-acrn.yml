@@ -18,7 +18,7 @@ local_conf_header:
     CONTAINER_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-acrn-uos/deploy/images/${MACHINE}"
     CONTAINER_PACKAGE_MC = "uos"
   Add core-image-base-package to acrn-image-base: |
-    IMAGE_INSTALL_append_pn-acrn-image-base = " core-image-base-package"
+    IMAGE_INSTALL:append:pn-acrn-image-base = " core-image-base-package"
   libvirt_provider: |
     PREFERRED_RPROVIDER_libvirt = "acrn-libvirt"
     PREFERRED_RPROVIDER_libvirt-virsh = "acrn-libvirt"

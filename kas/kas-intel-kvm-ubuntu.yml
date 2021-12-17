@@ -5,4 +5,4 @@ header:
 
 local_conf_header:
   ubuntu_cloud_image: |
-    IMAGE_INSTALL_append = " ubuntu-kvm-image-package"
+    IMAGE_INSTALL:append = " ubuntu-kvm-image-package"

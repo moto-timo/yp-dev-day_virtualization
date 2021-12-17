@@ -7,12 +7,12 @@ local_conf_header:
   tmp_kvm_host: |
     TMPDIR = "${TOPDIR}/tmp-kvm-host"
   image_fstypes: |
-    IMAGE_FSTYPES_append = " wic wic.bmap"
+    IMAGE_FSTYPES:append = " wic wic.bmap"
   distro_features_kvm: |
-    DISTRO_FEATURES_append = " kvm"
+    DISTRO_FEATURES:append = " kvm"
   libvirt_provider: |
     PREFERRED_RPROVIDER_libvirt = "libvirt"
     PREFERRED_RPROVIDER_libvirt-virsh = "libvirt"
     PREFERRED_RPROVIDER_libvirt-libvirtd = "libvirt"
   kvm_host_tools: |
-    IMAGE_INSTALL_append = " packagegroup-kvm-host"
+    IMAGE_INSTALL:append = " packagegroup-kvm-host"
