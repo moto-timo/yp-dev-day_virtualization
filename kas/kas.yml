@@ -75,7 +75,7 @@ bblayers_conf_header:
 
 local_conf_header:
   standard: |
-    CONF_VERSION = "1"
+    CONF_VERSION = "2"
 
   debug-tweaks: |
     EXTRA_IMAGE_FEATURES = "debug-tweaks"
