@@ -12,7 +12,7 @@ KERNEL_MODULE_AUTOLOAD += "nf_conntrack_ipv6 openvswitch"
 KERNEL_MODULE_AUTOLOAD += "${@bb.utils.contains('DISTRO_FEATURES', 'kvm', 'kvm', '', d)}"
 
 # aufs kernel support required for xen-image-minimal
-KERNEL_FEATURES:append += "${@bb.utils.contains('DISTRO_FEATURES', 'aufs', ' features/aufs/aufs-enable.scc', '', d)}"
+KERNEL_FEATURES:append = "${@bb.utils.contains('DISTRO_FEATURES', 'aufs', ' features/aufs/aufs-enable.scc', '', d)}"
 
 KERNEL_FEATURES:append = " cfg/virtio.scc"
 

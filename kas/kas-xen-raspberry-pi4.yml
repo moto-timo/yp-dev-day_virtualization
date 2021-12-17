@@ -22,7 +22,7 @@ local_conf_header:
   qemu_targets: |
     QEMU_TARGETS = "i386 x86_64 aarch64 arm"
   package_config:remove_sdl: |
-    PACKAGECONFIG:remove:pn-qemu += " sdl"
+    PACKAGECONFIG:remove:pn-qemu = " sdl"
   The packages-from-images recipe needs to know where images are: |
     VESSEL_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-xen-guest/deploy/images/${MACHINE}"
     VESSEL_PACKAGE_MC = "xen-guest"
