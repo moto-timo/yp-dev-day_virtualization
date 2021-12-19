@@ -50,6 +50,10 @@ repos:
   meta-virtualization:
     url: "https://git.yoctoproject.org/git/meta-virtualization"
     refspec: master
+    patches:
+      plain:
+        repo: meta-custom
+        path: "patches/meta-virtualization/0001-cloud-init-change-git-branch-to-main.patch"
 
   meta-cloud-services:
     url: "https://git.yoctoproject.org/git/meta-cloud-services"

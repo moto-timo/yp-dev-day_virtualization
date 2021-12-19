@@ -1,0 +1,29 @@
+From b6d790874769e40f7b29ee3426f5dea9bd78603f Mon Sep 17 00:00:00 2001
+From: Tim Orling <tim.orling@konsulko.com>
+Date: Sun, 19 Dec 2021 10:46:19 -0800
+Subject: [PATCH] cloud-init: change git branch to main
+
+Like many other open source projects, the default branch is now main
+with no git history whatsoever of the original master branch.
+
+Signed-off-by: Tim Orling <tim.orling@konsulko.com>
+---
+ recipes-extended/cloud-init/cloud-init_20.3.bb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/recipes-extended/cloud-init/cloud-init_20.3.bb b/recipes-extended/cloud-init/cloud-init_20.3.bb
+index 67de582..d5605b8 100644
+--- a/recipes-extended/cloud-init/cloud-init_20.3.bb
++++ b/recipes-extended/cloud-init/cloud-init_20.3.bb
+@@ -5,7 +5,7 @@ LICENSE = "GPLv3"
+ LIC_FILES_CHKSUM = "file://LICENSE;md5=c6dd79b6ec2130a3364f6fa9d6380408"
+ 
+ SRCREV = "1431c8a1bddaabf85e1bbb32bf316a3aef20036e"
+-SRC_URI = "git://github.com/canonical/cloud-init;branch=master;protocol=https \
++SRC_URI = "git://github.com/canonical/cloud-init;branch=main;protocol=https \
+     file://cloud-init-source-local-lsb-functions.patch \
+     file://0001-setup.py-check-for-install-anywhere-in-args.patch \
+     file://0001-setup.py-respect-udevdir-variable.patch \
+-- 
+2.30.2
+
