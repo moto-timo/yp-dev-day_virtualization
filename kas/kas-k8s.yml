@@ -1,7 +1,7 @@
 header:
   version: 2
   includes:
-    - kas.yml
+    - kas/kas.yml
 
 distro: poky
 

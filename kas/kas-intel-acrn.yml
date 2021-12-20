@@ -1,7 +1,7 @@
 header:
   version: 2
   includes:
-    - kas-intel.yml
+    - kas/kas-intel.yml
 
 distro: acrn-demo-sos
 

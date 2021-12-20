@@ -1,7 +1,7 @@
 header:
   version: 2
   includes:
-    - kas-intel-kvm.yml
+    - kas/kas-intel-kvm.yml
 
 local_conf_header:
   ubuntu_cloud_image: |
