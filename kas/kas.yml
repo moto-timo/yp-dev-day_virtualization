@@ -92,5 +92,5 @@ local_conf_header:
         HALT,/tmp,10M,1K"
 
   distro_features: |
-    DISTRO_FEATURES:append = " virtualization"
+    DISTRO_FEATURES:append = " security virtualization"
 
