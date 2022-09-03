@@ -1,6 +1,5 @@
 header:
   version: 2
   includes:
+    - kas-raspberry-pi4.yml
     - kas-k8s.yml
-
-machine: raspberrypi4-64

@@ -3,16 +3,16 @@ header:
   includes:
     - kas/kas.yml
 
-machine: intel-corei7-64
+machine: raspberrypi4-64
 
 repos:
-  meta-intel:
-    url: "https://git.yoctoproject.org/git/meta-intel"
+  meta-raspberrypi:
+    url: "https://git.yoctoproject.org/git/meta-raspberrypi"
     refspec: master
 
 local_conf_header:
-  intel_kernel: |
-    PREFERRED_PROVIDER_virtual/kernel = "linux-intel-dev"
+  raspberrypi_kernel: |
+    PREFERRED_PROVIDER_virtual/kernel = "linux-raspberrypi"
 
   systemd_config: |
     DISTRO_FEATURES:append = " systemd"

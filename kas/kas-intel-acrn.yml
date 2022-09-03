@@ -9,6 +9,11 @@ target:
   - multiconfig:uos:core-image-base
   - acrn-image-base
 
+repos:
+  meta-acrn:
+    url: "https://github.com/intel/meta-acrn.git"
+    refspec: master
+
 local_conf_header:
   tmp_acrn_sos: |
     TMPDIR = "${TOPDIR}/tmp-acrn-sos"

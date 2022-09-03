@@ -29,10 +29,6 @@ repos:
       meta-poky:
       meta-yocto-bsp:
 
-  meta-intel:
-    url: "https://git.yoctoproject.org/git/meta-intel"
-    refspec: master
-
   meta-openembedded:
     url: "https://git.openembedded.org/meta-openembedded"
     refspec: master
@@ -42,10 +38,6 @@ repos:
       meta-networking:
       meta-perl:
       meta-python:
-
-  meta-acrn:
-    url: "https://github.com/intel/meta-acrn.git"
-    refspec: master
 
   meta-virtualization:
     url: "https://git.yoctoproject.org/git/meta-virtualization"
@@ -61,10 +53,6 @@ repos:
 
   meta-selinux:
     url: "https://git.yoctoproject.org/git/meta-selinux"
-    refspec: master
-
-  meta-raspberrypi:
-    url: "https://git.yoctoproject.org/git/meta-raspberrypi"
     refspec: master
 
 bblayers_conf_header:

@@ -1,9 +1,7 @@
 header:
   version: 2
   includes:
-    - kas/kas.yml
-
-machine: raspberrypi4-64
+    - kas/kas-raspberry-pi4.yml
 
 target:
    - multiconfig:xen-guest:xen-guest-image-minimal
