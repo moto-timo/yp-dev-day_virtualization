@@ -3,10 +3,10 @@ header:
   includes:
     - kas/kas-intel.yml
 
-distro: acrn-demo-sos
+distro: acrn-demo-service-vm
 
 target:
-  - multiconfig:uos:core-image-base
+  - multiconfig:acrn-user-vm:core-image-base
   - acrn-image-base
 
 repos:
@@ -15,13 +15,13 @@ repos:
     refspec: master
 
 local_conf_header:
-  tmp_acrn_sos: |
-    TMPDIR = "${TOPDIR}/tmp-acrn-sos"
-  sos_kernel: |
-    PREFERRED_PROVIDER_virtual/kernel = "linux-intel-acrn-sos"
+  tmp-acrn-service-vm: |
+    TMPDIR = "${TOPDIR}/tmp-acrn-service-vm"
+  service-vm_kernel: |
+    PREFERRED_PROVIDER_virtual/kernel = "linux-intel-acrn-service-vm"
   The packages-from-images recipe needs to know where images are: |
-    CONTAINER_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-acrn-uos/deploy/images/${MACHINE}"
-    CONTAINER_PACKAGE_MC = "uos"
+    CONTAINER_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-acrn-user-vm/deploy/images/${MACHINE}"
+    CONTAINER_PACKAGE_MC = "acrn-user-vm"
   Add core-image-base-package to acrn-image-base: |
     IMAGE_INSTALL:append:pn-acrn-image-base = " core-image-base-package"
   libvirt_provider: |
