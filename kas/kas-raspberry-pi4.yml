@@ -14,6 +14,9 @@ local_conf_header:
   raspberrypi_kernel: |
     PREFERRED_PROVIDER_virtual/kernel = "linux-raspberrypi"
 
+  licenses: |
+    LICENSE_FLAGS_ACCEPTED = "commercial synaptics-killswitch"
+
   systemd_config: |
     DISTRO_FEATURES:append = " systemd"
     VIRTUAL-RUNTIME_init_manager = "systemd"
