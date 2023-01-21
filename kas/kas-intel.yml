@@ -12,7 +12,7 @@ repos:
 
 local_conf_header:
   intel_kernel: |
-    PREFERRED_PROVIDER_virtual/kernel = "linux-intel-dev"
+    PREFERRED_PROVIDER_virtual/kernel = "linux-intel"
 
   systemd_config: |
     DISTRO_FEATURES:append = " systemd"
