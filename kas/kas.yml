@@ -23,7 +23,7 @@ repos:
   # to bblayers.conf:
   poky:
     url: "https://git.yoctoproject.org/git/poky"
-    refspec: master
+    branch: master
     layers:
       meta:
       meta-poky:
@@ -31,7 +31,7 @@ repos:
 
   meta-openembedded:
     url: "https://git.openembedded.org/meta-openembedded"
-    refspec: master
+    branch: master
     layers:
       meta-oe:
       meta-filesystems:
@@ -41,19 +41,19 @@ repos:
 
   meta-virtualization:
     url: "https://git.yoctoproject.org/git/meta-virtualization"
-    refspec: master
+    branch: master
 
   meta-cloud-services:
     url: "https://git.yoctoproject.org/git/meta-cloud-services"
-    refspec: master
+    branch: master
 
   meta-security:
     url: "https://git.yoctoproject.org/git/meta-security"
-    refspec: master
+    branch: master
 
   meta-selinux:
     url: "https://git.yoctoproject.org/git/meta-selinux"
-    refspec: master
+    branch: master
 
 bblayers_conf_header:
   standard: |

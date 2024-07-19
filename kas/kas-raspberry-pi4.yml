@@ -8,7 +8,7 @@ machine: raspberrypi4-64
 repos:
   meta-raspberrypi:
     url: "https://git.yoctoproject.org/git/meta-raspberrypi"
-    refspec: master
+    branch: master
 
 local_conf_header:
   raspberrypi_kernel: |
