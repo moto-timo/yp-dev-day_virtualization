@@ -6,5 +6,5 @@ RDEPENDS:${PN} = "\
     conntrack-tools \
     VIRTUAL-RUNTIME_runc \
     kubernetes \
-    virtual/containerd \
+    VIRTUAL-RUNTIME_containerd \
     "
