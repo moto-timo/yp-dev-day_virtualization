@@ -8,7 +8,6 @@ machine: intel-corei7-64
 repos:
   meta-intel:
     url: "https://git.yoctoproject.org/git/meta-intel"
-    refspec: master
 
 local_conf_header:
   intel_kernel: |

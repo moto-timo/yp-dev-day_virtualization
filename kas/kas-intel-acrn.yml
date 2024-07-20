@@ -12,7 +12,6 @@ target:
 repos:
   meta-acrn:
     url: "https://github.com/intel/meta-acrn.git"
-    refspec: master
 
 local_conf_header:
   tmp-acrn-service-vm: |

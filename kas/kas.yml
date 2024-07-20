@@ -15,6 +15,10 @@ target: core-image-base
 # The distro name as it is written into the `local.conf` of bitbake.
 distro: poky
 
+defaults:
+  repos:
+    branch: scarthgap
+
 repos:
   # Include local layer (e.g. conf/layer.conf)
   meta-custom:
@@ -23,7 +27,6 @@ repos:
   # to bblayers.conf:
   poky:
     url: "https://git.yoctoproject.org/git/poky"
-    refspec: master
     layers:
       meta:
       meta-poky:
@@ -31,7 +34,6 @@ repos:
 
   meta-openembedded:
     url: "https://git.openembedded.org/meta-openembedded"
-    refspec: master
     layers:
       meta-oe:
       meta-filesystems:
@@ -41,19 +43,15 @@ repos:
 
   meta-virtualization:
     url: "https://git.yoctoproject.org/git/meta-virtualization"
-    refspec: master
 
   meta-cloud-services:
     url: "https://git.yoctoproject.org/git/meta-cloud-services"
-    refspec: master
 
   meta-security:
     url: "https://git.yoctoproject.org/git/meta-security"
-    refspec: master
 
   meta-selinux:
     url: "https://git.yoctoproject.org/git/meta-selinux"
-    refspec: master
 
 bblayers_conf_header:
   standard: |
