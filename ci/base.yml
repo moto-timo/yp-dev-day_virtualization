@@ -4,6 +4,11 @@
 
 header:
   version: 14
+  includes:
+    - ci/meta-cloud-services.yml
+    - ci/meta-openembedded.yml
+    - ci/meta-security.yml
+    - ci/meta-virtualization.yml
 
 distro: poky
 
