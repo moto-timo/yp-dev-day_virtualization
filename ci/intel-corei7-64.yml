@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+header:
+  version: 14
+  includes:
+    - ci/meta-intel.yml
+
+machine: intel-corei7-64
+
+local_conf_header:
+  intel_kernel: |
+    PREFERRED_PROVIDER_virtual/kernel = "linux-intel"
