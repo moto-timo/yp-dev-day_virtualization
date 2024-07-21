@@ -91,18 +91,24 @@ update-repos:
     paths:
       - lockfile.yml
 
-xen-raspberry-pi4:
-  stage: build
-  script:
-    - kas build kas/kas-xen-raspberry-pi4.yml
+xen:
+  extends: .build
+  timeout: 4h
+  parallel:
+    matrix:
+      - PLATFORM: [raspberrypi4-64, beagleplay]
 
-intel-kvm-ubuntu:
-  stage: build
-  script:
-    - kas build kas/kas-intel-kvm-ubuntu.yml
+kvm-ubuntu:
+  extends: .build
+  timeout: 2h
+  parallel:
+    matrix:
+      - PLATFORM: [intel-corei7-64]
 
-intel-acrn:
-  stage: build
-  script:
-    - kas build kas/kas-intel-acrn.yml
+acrn:
+  extends: .build
+  timeout: 2h
+  parallel:
+    matrix:
+      - PLATFORM: [intel-corei7-64]
 
