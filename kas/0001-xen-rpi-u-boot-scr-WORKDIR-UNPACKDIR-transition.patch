@@ -1,0 +1,48 @@
+From 17bcc953ef1c6b98b60bba4ca2579ff422821d5f Mon Sep 17 00:00:00 2001
+From: Tim Orling <tim.orling@konsulko.com>
+Date: Sat, 20 Jul 2024 19:59:04 -0700
+Subject: [PATCH] xen-rpi-u-boot-scr: WORKDIR -> UNPACKDIR transition
+
+Borrowed from Leon Anavi <leon.anavi@konsulko.com>
+meta-raspberrypi: commit 434ed33c90b7659152b1e8d7c2d4d785db85105f
+
+and from Martin Jansa <martin.jansa@gmail.com>
+meta-raspberrypi: commit c39c2b165e68388767f54dc86acf4595a33ee1e1
+
+This adapts to the oe-core rework to enforce a separate directory
+for unpacking local sources (UNPACKDIR) instead of directly using
+WORKDIR.
+
+Follows the preliminary guideline from:
+https://lists.openembedded.org/g/openembedded-architecture/message/2007
+
+Signed-off-by: Tim Orling <tim.orling@konsulko.com>
+---
+ .../recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb     | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb b/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb
+index 87619d01..3f83c7f8 100644
+--- a/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb
++++ b/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb
+@@ -17,13 +17,16 @@ do_compile() {
+         -e 's/@@KERNEL_BOOTCMD@@/${KERNEL_BOOTCMD}/' \
+         -e 's/@@RPI_DOM0_MEM@@/${RPI_DOM0_MEM}/' \
+         -e 's/@@RPI_DEBUG_XEN_ARGS@@/${RPI_DEBUG_XEN_ARGS}/' \
+-        "${WORKDIR}/boot.cmd.xen.in" > "${WORKDIR}/boot.cmd"
++        "${UNPACKDIR}/boot.cmd.xen.in" > "${WORKDIR}/boot.cmd"
+ 
+     mkimage -A ${UBOOT_ARCH} -T script -C none -n "Boot script" -d "${WORKDIR}/boot.cmd" boot.scr
+ }
+ 
+ inherit kernel-arch deploy nopackages
+ 
++S = "${WORKDIR}/sources"
++UNPACKDIR = "${S}"
++
+ do_deploy() {
+     install -d ${DEPLOYDIR}
+     install -m 0644 boot.scr ${DEPLOYDIR}
+-- 
+2.39.2
+
