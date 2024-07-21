@@ -3,6 +3,7 @@
 header:
   version: 14
   includes:
+    - ci/base.yml
     - ci/meta-ti.yml
 
 machine: beagleplay
