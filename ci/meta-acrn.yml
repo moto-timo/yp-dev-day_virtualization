@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+header:
+  version: 14
+  includes:
+    - ci/meta-intel.yml
+
+repos:
+  meta-acrn:
+    url: https://github.com/intel/meta-acrn
