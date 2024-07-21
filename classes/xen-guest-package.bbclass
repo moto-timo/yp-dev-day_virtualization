@@ -13,6 +13,7 @@ VESSEL_PACKAGE_DEPLOY_DIR ?= "${DEPLOY_DIR_IMAGE}"
 
 # The name of the image
 IMAGE_NAME := "${@d.getVar('PN').replace('-package', '')}"
+IMAGE_NAME_SUFFIX ?= ".rootfs"
 # Where to install the image
 vesseldir ?= "${localstatedir}/lib/machines"
 
@@ -22,5 +23,5 @@ do_install[mcdepends] += "multiconfig::${VESSEL_PACKAGE_MC}:${IMAGE_NAME}:do_ima
 do_install () {
 	install -d ${D}${vesseldir}
 	install ${VESSEL_PACKAGE_DEPLOY_DIR}/Image ${D}${vesseldir}/Image
-	install ${VESSEL_PACKAGE_DEPLOY_DIR}/${IMAGE_NAME}-${MACHINE}.wic.qcow2 ${D}${vesseldir}/${IMAGE_NAME}.wic.qcow2
+	install ${VESSEL_PACKAGE_DEPLOY_DIR}/${IMAGE_NAME}-${MACHINE}${IMAGE_NAME_SUFFIX}.wic.qcow2 ${D}${vesseldir}/${IMAGE_NAME}.wic.qcow2
 }
