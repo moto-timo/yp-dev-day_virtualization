@@ -17,8 +17,11 @@ defaults:
     branch: master
 
 repos:
+  # Include local layer (e.g. conf/layer.conf)
+  meta-custom:
+
   poky:
-    url: https://git.yoctoproject.org/git/poky
+    url: https://git.yoctoproject.org/poky.git
     layers:
       meta:
       meta-poky:
