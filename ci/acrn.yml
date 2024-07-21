@@ -3,6 +3,7 @@
 header:
   version: 14
   includes:
+    - ci/meta-openembedded.yml
     - ci/meta-acrn.yml
 
 distro: acrn-demo-service-vm
