@@ -5,7 +5,7 @@ header:
 
 repos:
   meta-clang:
-    url: https://github.com/kraj/meta-clang
+    url: https://github.com/kraj/meta-clang.git
 
 local_conf_header:
   toolchain: |

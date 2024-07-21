@@ -22,10 +22,10 @@ def repo_shortname(url):
             .replace('*', '.'))
 
 repositories = (
-    "https://git.yoctoproject.org/git/poky",
-    "https://git.openembedded.org/meta-openembedded",
-    "https://git.yoctoproject.org/git/meta-virtualization",
-    "https://github.com/kraj/meta-clang",
+    "https://git.yoctoproject.org/poky.git",
+    "https://git.openembedded.org/meta-openembedded.git",
+    "https://git.yoctoproject.org/meta-virtualization.git",
+    "https://github.com/kraj/meta-clang.git",
 )
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ header:
 
 repos:
   meta-ti:
-    url: https://git.yoctoproject.org/meta-ti
+    url: https://git.yoctoproject.org/meta-ti.git
     layers:
       meta-ti-bsp:
       meta-ti-extras:
