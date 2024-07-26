@@ -13,5 +13,5 @@ do_install[depends] += "libvirt:do_install"
 
 do_install () {
 	install -d ${D}${vesseldir}
-	install ${S}/../${VESSEL_PAYLOAD_NAME} ${D}${vesseldir}/${VESSEL_PAYLOAD_NAME}
+	install ${UNPACKDIR}/${VESSEL_PAYLOAD_NAME} ${D}${vesseldir}/${VESSEL_PAYLOAD_NAME}
 }
