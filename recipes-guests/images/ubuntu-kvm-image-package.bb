@@ -7,7 +7,7 @@ inherit kvm-binary-guest-package
 # precise, xenial and bionic do not have kvm images
 # eoan, focal and groovy do
 UBUNTU_BASE_URL ??= "https://cloud-images.ubuntu.com"
-UBUNTU_RELEASE ??="focal"
+UBUNTU_RELEASE ??="jammy"
 UBUNTU_IMAGE_ARCH ??="amd64"
 UBUNTU_IMAGE_NAME ?= "${UBUNTU_RELEASE}-server-cloudimg-${UBUNTU_IMAGE_ARCH}-disk-kvm.img"
 UBUNTU_IMAGE_DATE ?= "current"
