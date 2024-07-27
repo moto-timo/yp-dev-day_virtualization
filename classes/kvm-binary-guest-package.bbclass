@@ -11,6 +11,8 @@ vesseldir ?= "${localstatedir}/lib/libvirt/images"
 
 do_install[depends] += "libvirt:do_install"
 
+S = "${WORKDIR}/${BP}"
+
 do_install () {
 	install -d ${D}${vesseldir}
 	install ${UNPACKDIR}/${VESSEL_PAYLOAD_NAME} ${D}${vesseldir}/${VESSEL_PAYLOAD_NAME}
