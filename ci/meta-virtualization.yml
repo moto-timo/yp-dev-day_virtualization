@@ -10,3 +10,7 @@ header:
 repos:
   meta-virtualization:
     url: https://git.yoctoproject.org/meta-virtualization
+
+local_conf_header:
+  meta-virt: |
+    DISTRO_FEATURES:append = " virtualization"
