@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+header:
+  version: 14
+  includes:
+    - ci/meta-openembedded.yml
+
+repos:
+  meta-security:
+    url: https://git.yoctoproject.org/meta-security
+
+local_conf_header:
+   meta-security: |
+     DISTRO_FEATURES:append = " security"

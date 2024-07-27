@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+# Based on https://git.yoctoproject.org/meta-arm/plain/ci/base.yml
+
+header:
+  version: 14
+  includes:
+    - ci/meta-cloud-services.yml
+    - ci/meta-openembedded.yml
+    - ci/meta-security.yml
+    - ci/meta-virtualization.yml
+
+distro: poky
+
+machine: unset
+
+target:
+  - core-image-full-cmdline
+
+defaults:
+  repos:
+    branch: master
+
+repos:
+  # Include local layer (e.g. conf/layer.conf)
+  meta-custom:
+
+  poky:
+    url: https://git.yoctoproject.org/poky.git
+    layers:
+      meta:
+      meta-poky:
+
+env:
+  BB_LOGCONFIG: ""
+
+local_conf_header:
+  base: |
+    CONF_VERSION = "2"
+    BB_SERVER_TIMEOUT = "300"
+  setup: |
+    PACKAGE_CLASSES = "package_ipk"
+    PACKAGECONFIG:remove:pn-qemu-system-native = "gtk+ sdl"

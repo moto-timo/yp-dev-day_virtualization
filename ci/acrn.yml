@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+header:
+  version: 14
+  includes:
+    - ci/meta-openembedded.yml
+    - ci/meta-acrn.yml
+
+distro: acrn-demo-service-vm
+
+target:
+  - multiconfig:acrn-user-vm:core-image-base
+  - acrn-image-base
+
+local_conf_header:
+  tmp-acrn-service-vm: |
+    TMPDIR = "${TOPDIR}/tmp-acrn-service-vm"
+  service-vm_kernel: |
+    PREFERRED_PROVIDER_virtual/kernel = "linux-intel-acrn-service-vm"
+  The packages-from-images recipe needs to know where images are: |
+    CONTAINER_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-acrn-user-vm/deploy/images/${MACHINE}"
+    CONTAINER_PACKAGE_MC = "acrn-user-vm"
+  Add core-image-base-package to acrn-image-base: |
+    IMAGE_INSTALL:append:pn-acrn-image-base = " core-image-base-package"
+  libvirt_provider: |
+    PREFERRED_RPROVIDER_libvirt = "acrn-libvirt"
+    PREFERRED_RPROVIDER_libvirt-virsh = "acrn-libvirt"
+    PREFERRED_RPROVIDER_libvirt-libvirtd = "acrn-libvirt"

@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+header:
+  version: 14
+  includes:
+    - ci/meta-virtualization.yml
+
+local_conf_header:
+  meta-virt: |
+    DISTRO_FEATURES:append = " virtualization kvm"
+  tmp_kvm_host: |
+    TMPDIR = "${TOPDIR}/tmp-kvm-host"
+  image_fstypes: |
+    IMAGE_FSTYPES:append = " wic wic.bmap"
+  libvirt_provider: |
+    PREFERRED_RPROVIDER_libvirt = "libvirt"
+    PREFERRED_RPROVIDER_libvirt-virsh = "libvirt"
+    PREFERRED_RPROVIDER_libvirt-libvirtd = "libvirt"
+  kvm_host_tools: |
+    IMAGE_INSTALL:append = " packagegroup-kvm-host"

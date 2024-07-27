@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+header:
+  version: 14
+
+repos:
+  meta-arm:
+    url: https://git.yoctoproject.org/meta-arm.git
+    layers:
+      meta-arm:
+      meta-arm-bsp:
+      meta-arm-toolchain:

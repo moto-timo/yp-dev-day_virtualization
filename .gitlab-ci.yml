@@ -1,17 +1,114 @@
-image: ghcr.io/siemens/kas/kas
+image: ${MIRROR_GHCR}/siemens/kas/kas:4.4
 
-xen-raspberry-pi4:
-  stage: build
-  script:
-    - kas build kas/kas-xen-raspberry-pi4.yml
+variables:
+  # The default machine tag for the build jobs
+  DEFAULT_TAG: ""
+  # The directory to use as the persistent cache (the root for DL_DIR, SSTATE_DIR, etc)
+  CACHE_DIR: $CI_BUILDS_DIR/persist
+  # The container mirror to use
+  MIRROR_GHCR: ghcr.io
+  # The list of extra Kas fragments to be used when building
+  EXTRA_KAS_FILES: ""
 
-intel-kvm-ubuntu:
-  stage: build
-  script:
-    - kas build kas/kas-intel-kvm-ubuntu.yml
+stages:
+  - prep
+  - build
 
-intel-acrn:
+# Common job fragment to get a worker ready
+.setup:
+  tags:
+    - $DEFAULT_TAG
   stage: build
+  interruptible: true
+  variables:
+    KAS_WORK_DIR: $CI_PROJECT_DIR/work
+    KAS_REPO_REF_DIR: $CACHE_DIR/repos
+    SSTATE_DIR: $CACHE_DIR/sstate
+    DL_DIR: $CACHE_DIR/downloads
+    BB_LOGCONFIG: $CI_PROJECT_DIR/ci/logging.yml
+    TOOLCHAIN_DIR: $CACHE_DIR/toolchains
+    IMAGE_DIR: $CI_PROJECT_DIR/work/build/tmp/deploy/images
+    TOOLCHAIN_LINK_DIR: $CI_PROJECT_DIR/work/build/toolchains
+  before_script:
+    - echo KAS_WORK_DIR = $KAS_WORK_DIR
+    - echo SSTATE_DIR = $SSTATE_DIR
+    - echo DL_DIR = $DL_DIR
+    - rm -rf $KAS_WORK_DIR
+    - mkdir --verbose --parents $KAS_WORK_DIR $KAS_REPO_REF_DIR $SSTATE_DIR $DL_DIR
+
+# Generalised fragment to do a Kas build
+.build:
+  extends: .setup
+  rules:
+    # Don't run MR pipelines
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    # Don't run pipelines for tags
+    - if: $CI_COMMIT_TAG
+      when: never
+    # Don't run if BUILD_ENABLE_REGEX is set, but the job doesn't match the regex
+    - if: '$BUILD_ENABLE_REGEX != null && $CI_JOB_NAME !~ $BUILD_ENABLE_REGEX'
+      when: never
+    # Allow the dev kernels to fail and not fail the overall build
+    - if: '$KERNEL == "linux-yocto-dev"'
+      allow_failure: true
+    # Catch all for everything else
+    - if: '$KERNEL != "linux-yocto-dev"'
   script:
-    - kas build kas/kas-intel-acrn.yml
+    - KASFILES=$(./ci/jobs-to-kas "$CI_JOB_NAME" $EXTRA_KAS_FILES):lockfile.yml
+    - echo KASFILES=$KASFILES
+    - kas dump --update --force-checkout --resolve-refs --resolve-env $KASFILES
+    - kas build $KASFILES
+    - ./ci/check-warnings $KAS_WORK_DIR/build/warnings.log
+# artifacts:
+#   name: "logs"
+#   when: always
+#   paths:
+#     - $CI_PROJECT_DIR/work/build/tmp*/work*/**/temp/log.do_*.*
+#     - $CI_PROJECT_DIR/work/build/tmp*/work*/**/testimage/*
+
+#
+# Prep stage, update repositories once.
+# Set the CI variable CI_CLEAN_REPOS=1 to refetch the respositories from scratch
+#
+update-repos:
+  extends: .setup
+  stage: prep
+  allow_failure:
+    exit_codes: 128
+  script:
+    - |
+      flock --verbose --timeout 60 $KAS_REPO_REF_DIR ./ci/update-repos
+      # Only generate if doesn't already exist, to allow feature branches to drop one in.
+      if test -f lockfile.yml; then
+        echo Using existing lockfile.yml
+      else
+        # Be sure that this is the complete list of layers being fetched
+        kas dump --lock --update ci/qemuarm64.yml:ci/meta-openembedded.yml:ci/clang.yml:ci/meta-virtualization.yml | tee lockfile.yml
+      fi
+  artifacts:
+    name: "lockfile"
+    paths:
+      - lockfile.yml
+
+xen:
+  extends: .build
+  timeout: 4h
+  parallel:
+    matrix:
+      - PLATFORM: [raspberrypi4-64, beagleplay]
+
+kvm-ubuntu:
+  extends: .build
+  timeout: 2h
+  parallel:
+    matrix:
+      - PLATFORM: [intel-corei7-64]
+
+acrn:
+  extends: .build
+  timeout: 2h
+  parallel:
+    matrix:
+      - PLATFORM: [intel-corei7-64]
 
