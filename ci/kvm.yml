@@ -9,8 +9,8 @@ target:
   - core-image-full-cmdline
 
 local_conf_header:
-  meta-virt: |
-    DISTRO_FEATURES:append = " virtualization kvm"
+  kvm: |
+    DISTRO_FEATURES:append = " kvm"
   tmp_kvm_host: |
     TMPDIR = "${TOPDIR}/tmp-kvm-host"
   image_fstypes: |

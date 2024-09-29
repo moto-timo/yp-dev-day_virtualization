@@ -6,8 +6,8 @@ header:
     - ci/meta-virtualization.yml
 
 local_conf_header:
-  meta-virt: |
-    DISTRO_FEATURES:append = " virtualization xen"
+  xen: |
+    DISTRO_FEATURES:append = " xen"
 
 target:
   - multiconfig:xen-guest:xen-guest-image-minimal
