@@ -97,6 +97,14 @@ xen:
   parallel:
     matrix:
       - PLATFORM: [raspberrypi4-64, beagleplay]
+  artifacts:
+    name: "images"
+    paths:
+      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/core-image-full-cmdline-${PLATFORM}.rootfs-*.wic.bz2
+      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/core-image-full-cmdline-${PLATFORM}.rootfs-*.wic.bmap
+      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/core-image-full-cmdline-${PLATFORM}.rootfs-*.wic.manifest
+    expire_in: 1 week
+
 
 kvm-ubuntu:
   extends: .build
