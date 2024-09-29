@@ -5,10 +5,23 @@ header:
   includes:
     - ci/meta-virtualization.yml
 
-local_conf_header:
-  xen: |
-    DISTRO_FEATURES:append = " xen"
-
 target:
   - multiconfig:xen-guest:xen-guest-image-minimal
   - xen-image-minimal
+
+local_conf_header:
+  tmp_xen_host: |
+    TMPDIR = "${TOPDIR}/tmp-xen-host"
+  image_fstypes: |
+    IMAGE_FSTYPES:append = " wic wic.bz2 wic.bmap"
+  xen_distro_features: |
+    DISTRO_FEATURES:append = " xen"
+  qemu_targets: |
+    QEMU_TARGETS = "i386 x86_64 aarch64 arm"
+  package_config:remove_sdl: |
+    PACKAGECONFIG:remove:pn-qemu = " sdl"
+  The packages-from-images recipe needs to know where images are: |
+    VESSEL_PACKAGE_DEPLOY_DIR = "${TOPDIR}/tmp-xen-guest/deploy/images/${MACHINE}"
+    VESSEL_PACKAGE_MC = "xen-guest"
+  Add xen-guest-image-minal-package to xen-host core-image-base: |
+    IMAGE_INSTALL:append:pn-xen-image-minimal = " xen-guest-image-minimal-package"
