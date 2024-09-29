@@ -122,8 +122,8 @@ acrn:
   artifacts:
     name: "images"
     paths:
-      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/core-image-full-cmdline-${PLATFORM}.rootfs-*.wic.bz2
-      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/core-image-full-cmdline-${PLATFORM}.rootfs-*.wic.bmap
-      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/core-image-full-cmdline-${PLATFORM}.rootfs-*.manifest
+      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/acrn-image-base-${PLATFORM}.rootfs-*.wic.bz2
+      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/acrn-image-base-${PLATFORM}.rootfs-*.wic.bmap
+      - $CI_PROJECT_DIR/work/build/tmp*/deploy/images/${PLATFORM}/acrn-image-base-${PLATFORM}.rootfs-*.manifest
     expire_in: 1 week
 
