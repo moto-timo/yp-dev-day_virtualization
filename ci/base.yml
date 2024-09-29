@@ -14,9 +14,6 @@ distro: poky
 
 machine: unset
 
-target:
-  - core-image-full-cmdline
-
 defaults:
   repos:
     branch: master

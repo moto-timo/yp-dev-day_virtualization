@@ -5,6 +5,9 @@ header:
   includes:
     - ci/meta-virtualization.yml
 
+target:
+  - core-image-full-cmdline
+
 local_conf_header:
   meta-virt: |
     DISTRO_FEATURES:append = " virtualization kvm"
