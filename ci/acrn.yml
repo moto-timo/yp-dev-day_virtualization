@@ -13,6 +13,8 @@ target:
   - acrn-image-base
 
 local_conf_header:
+  acrn: |
+    DISTRO_FEATURES:append = "systemd"
   tmp-acrn-service-vm: |
     TMPDIR = "${TOPDIR}/tmp-acrn-service-vm"
   service-vm_kernel: |

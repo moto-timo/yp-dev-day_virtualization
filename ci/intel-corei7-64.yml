@@ -11,3 +11,6 @@ machine: intel-corei7-64
 local_conf_header:
   intel_kernel: |
     PREFERRED_PROVIDER_virtual/kernel = "linux-intel"
+  systemd_config: |
+    INIT_MANAGER = "systemd"
+    DISTRO_FEATURES:append = " usrmerge"
