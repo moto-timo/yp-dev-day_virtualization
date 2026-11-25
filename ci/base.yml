@@ -47,3 +47,7 @@ local_conf_header:
   setup: |
     PACKAGE_CLASSES = "package_ipk"
     PACKAGECONFIG:remove:pn-qemu-system-native = "gtk+ sdl"
+  hashserve: |
+    # SSTATE_DIR persists across CI jobs but the build dir does not; keep the
+    # hash equivalence database with the sstate it describes
+    BB_HASHSERVE_DB_DIR = "${SSTATE_DIR}"
