@@ -1,0 +1,35 @@
+From ff8677ceedf709cd5764903becb026327827a1ee Mon Sep 17 00:00:00 2001
+From: Tim Orling <tim.orling@konsulko.com>
+Date: Wed, 25 Nov 2026 13:00:38 -0800
+Subject: [meta-virtualization][PATCH 1/2] xen-rpi-u-boot-scr: fix UNPACKDIR
+
+Since oe-core:
+f19ea21c8eb "bitbake.conf: set UNPACKDIR to just 'sources' and not 'sources-unpack'"
+UNPACKDIR defaults to ${WORKDIR}/sources, so we can drop the redundant definition.
+
+Since oe-core:
+46480a5e66 "insane/do_qa_unpack: add checks that ensure S is set correctly"
+S = "${UNPACKDIR}" is needed.
+
+Signed-off-by: Tim Orling <tim.orling@konsulko.com>
+---
+ .../recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb       | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb b/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb
+index 3f83c7f8..e25963ad 100644
+--- a/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb
++++ b/dynamic-layers/raspberrypi/recipes-bsp/xen-rpi-u-boot-scr/xen-rpi-u-boot-scr.bb
+@@ -24,8 +24,7 @@ do_compile() {
+ 
+ inherit kernel-arch deploy nopackages
+ 
+-S = "${WORKDIR}/sources"
+-UNPACKDIR = "${S}"
++S = "${UNPACKDIR}"
+ 
+ do_deploy() {
+     install -d ${DEPLOYDIR}
+-- 
+2.56.1
+
