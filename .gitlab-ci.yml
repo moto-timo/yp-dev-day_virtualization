@@ -58,7 +58,8 @@ stages:
     - KASFILES=$(./ci/jobs-to-kas "$CI_JOB_NAME" $EXTRA_KAS_FILES):lockfile.yml
     - echo KASFILES=$KASFILES
     - kas dump --update --force-checkout --resolve-refs --resolve-env $KASFILES
-    - kas build $KASFILES
+    # -q: drop per-task NOTE lines so errors fit in the 4 MB job log
+    - kas build $KASFILES -- -q
     - ./ci/check-warnings $KAS_WORK_DIR/build/warnings.log
 # artifacts:
 #   name: "logs"
