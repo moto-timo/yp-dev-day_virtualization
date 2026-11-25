@@ -1,6 +1,5 @@
 SUMMARY = "Package for ${IMAGE_NAME}"
-# This license statement is a lie. Ideally set it to something more appropriate.
-LICENSE = "CLOSED"
+# Recipes must set LICENSE and LIC_FILES_CHKSUM for the image they package
 
 INHIBIT_DEFAULT_DEPS = "1"
 

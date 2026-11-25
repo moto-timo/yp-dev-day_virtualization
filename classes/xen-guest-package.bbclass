@@ -1,6 +1,7 @@
 SUMMARY = "Package for ${IMAGE_NAME}"
-# This license statement is a lie. Ideally set it to something more appropriate.
-LICENSE = "CLOSED"
+# The image is an aggregate; its license manifest is installed inside it
+LICENSE = "LicenseRef-OE-Guest-Image"
+LIC_FILES_CHKSUM = "file://${YPDD_LICENSE_DIR}/LicenseRef-OE-Guest-Image;md5=8232aaa0c00ee1e56f2160da404edaee"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"

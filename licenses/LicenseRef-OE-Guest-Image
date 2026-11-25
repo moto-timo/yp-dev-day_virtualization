@@ -1,0 +1,12 @@
+OpenEmbedded guest image
+
+This package contains a guest disk image, and its kernel, built from
+OpenEmbedded recipes in another multiconfig of the same build. The image is
+an aggregate of separately licensed software packages. It is not covered
+by a single license.
+
+- The license of each package in the image is listed in the license
+  manifest at /usr/share/common-licenses/license.manifest inside the
+  image (COPY_LIC_MANIFEST = "1" in the guest multiconfig).
+- The same manifest and the full license texts are in the guest build's
+  ${DEPLOY_DIR}/licenses/ directory.

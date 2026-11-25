@@ -1,0 +1,14 @@
+Ubuntu cloud image
+
+This package contains an unmodified Ubuntu cloud image downloaded from
+https://cloud-images.ubuntu.com/. The image is an aggregate of separately
+licensed software packages. It is not covered by a single license.
+
+- The license of each package in the image is in
+  /usr/share/doc/<package>/copyright inside the image.
+- The list of packages and versions is in the <image>.manifest file
+  published by Canonical next to the image. This package installs it
+  next to the image.
+- Ubuntu and Canonical trademarks are governed by the Canonical
+  Intellectual Property Rights Policy:
+  https://ubuntu.com/legal/intellectual-property-policy
