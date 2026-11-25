@@ -1,5 +1,5 @@
 header:
-  version: 2
+  version: 23
   includes:
-    - kas-raspberry-pi4.yml
-    - kas-k8s.yml
+    - kas/kas-raspberry-pi4.yml
+    - kas/kas-k8s.yml

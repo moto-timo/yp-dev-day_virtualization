@@ -5,7 +5,7 @@ header:
   # format version this file was created. It is used by kas to figure
   # out if it is compatible with this file. The version is an integer that
   # is increased on every format change.
-  version: 8
+  version: 23
 # The machine as it is written into the `local.conf` of bitbake.
 machine: qemux86-64
 

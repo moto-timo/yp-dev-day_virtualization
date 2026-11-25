@@ -3,7 +3,7 @@
 # Based on https://git.yoctoproject.org/meta-arm/plain/ci/base.yml
 
 header:
-  version: 14
+  version: 23
   includes:
     - ci/meta-cloud-services.yml
     - ci/meta-openembedded.yml

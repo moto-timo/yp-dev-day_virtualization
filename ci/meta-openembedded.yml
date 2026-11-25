@@ -3,7 +3,7 @@
 # From https://git.yoctoproject.org/meta-arm/plain/ci/meta-openembedded.yml
 
 header:
-  version: 14
+  version: 23
 
 repos:
   meta-openembedded:

@@ -3,7 +3,7 @@
 # From https://git.yoctoproject.org/meta-arm/plain/ci/meta-virtualization.yml
 
 header:
-  version: 14
+  version: 23
   includes:
     - ci/meta-openembedded.yml
 
