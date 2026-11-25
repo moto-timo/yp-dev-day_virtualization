@@ -15,6 +15,7 @@ local_conf_header:
   image_fstypes: |
     IMAGE_FSTYPES:append = " wic wic.bz2 wic.bmap"
   xen_distro_features: |
+    INIT_MANAGER = "systemd"
     DISTRO_FEATURES:append = " xen"
   qemu_targets: |
     QEMU_TARGETS = "i386 x86_64 aarch64 arm"
