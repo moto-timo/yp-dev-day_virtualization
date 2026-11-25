@@ -7,5 +7,12 @@ repos:
   meta-ti:
     url: https://git.yoctoproject.org/meta-ti.git
     layers:
+      meta-beagle:
       meta-ti-bsp:
       meta-ti-extras:
+
+local_conf_header:
+  meta-ti_udev-aragoconf: |
+    # meta-ti's security dynamic layer appends udev-aragoconf, which only
+    # exists in meta-arago
+    BBMASK += "meta-ti/meta-ti-bsp/dynamic-layers/security-layer/recipes-core/udev/udev-aragoconf_%.bbappend"
