@@ -19,13 +19,24 @@ repos:
   # Include local layer (e.g. conf/layer.conf)
   meta-custom:
 
-  # Here we include a list of layers from the poky repository to add
-  # to bblayers.conf:
-  poky:
-    url: "https://git.yoctoproject.org/git/poky"
+  # The poky repository is no longer updated on master; use its
+  # component repositories instead.
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: master
+    layers:
+      bitbake: disabled
+
+  core:
+    url: "https://git.openembedded.org/openembedded-core"
     branch: master
     layers:
       meta:
+
+  meta-yocto:
+    url: "https://git.yoctoproject.org/meta-yocto"
+    branch: master
+    layers:
       meta-poky:
       meta-yocto-bsp:
 

@@ -22,7 +22,9 @@ def repo_shortname(url):
             .replace('*', '.'))
 
 repositories = (
-    "https://git.yoctoproject.org/poky.git",
+    "https://git.openembedded.org/bitbake",
+    "https://git.openembedded.org/openembedded-core",
+    "https://git.yoctoproject.org/meta-yocto",
     "https://git.openembedded.org/meta-openembedded.git",
     "https://git.yoctoproject.org/meta-virtualization.git",
     "https://github.com/kraj/meta-clang.git",

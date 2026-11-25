@@ -22,10 +22,19 @@ repos:
   # Include local layer (e.g. conf/layer.conf)
   meta-custom:
 
-  poky:
-    url: https://git.yoctoproject.org/poky.git
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    layers:
+      bitbake: disabled
+
+  core:
+    url: https://git.openembedded.org/openembedded-core
     layers:
       meta:
+
+  meta-yocto:
+    url: https://git.yoctoproject.org/meta-yocto
+    layers:
       meta-poky:
 
 env:
