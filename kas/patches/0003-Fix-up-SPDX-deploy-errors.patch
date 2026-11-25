@@ -1,0 +1,54 @@
+From 81665f07475950ef82d6a48e1889976af5a73963 Mon Sep 17 00:00:00 2001
+From: Joshua Watt <JPEWhacker@gmail.com>
+Date: Thu, 12 Nov 2026 08:25:10 -0700
+Subject: [PATCH] Fix up SPDX deploy errors
+
+do_deploy tasks now generate SPDX output for files that are placed in
+the deploy directory; however SPDX must be told if it is expected that
+do_deploy will not produce any files by setting
+SPDX_DEPLOY_ALLOW_EMPTY:task-deploy = "1"
+
+Several recipes in meta-virtualization have do_deploy tasks that may not
+produce any output, so mark these tasks to prevent them from generating
+errors.
+
+Signed-off-by: Joshua Watt <JPEWhacker@gmail.com>
+Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
+---
+ classes/container-bundle.bbclass   | 1 +
+ classes/oci-multiarch.bbclass      | 1 +
+ recipes-extended/xen/xen-tools.inc | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/classes/container-bundle.bbclass b/classes/container-bundle.bbclass
+index bbbcc889..6cf39882 100644
+--- a/classes/container-bundle.bbclass
++++ b/classes/container-bundle.bbclass
+@@ -691,3 +691,4 @@ do_deploy[dirs] = "${DEPLOYDIR}"
+ 
+ # Only add sstate for deploy when enabled
+ SSTATE_SKIP_CREATION:task-deploy = "${@'' if d.getVar('CONTAINER_BUNDLE_DEPLOY') == '1' else '1'}"
++SPDX_DEPLOY_ALLOW_EMPTY:task-deploy = "1"
+diff --git a/classes/oci-multiarch.bbclass b/classes/oci-multiarch.bbclass
+index 43944afc..b92e13d8 100644
+--- a/classes/oci-multiarch.bbclass
++++ b/classes/oci-multiarch.bbclass
+@@ -272,5 +272,6 @@ python do_deploy() {
+ }
+ 
+ addtask do_deploy after do_create_multiarch_index before do_build
++SPDX_DEPLOY_ALLOW_EMPTY:task-deploy = "1"
+ 
+ EXCLUDE_FROM_WORLD = "1"
+diff --git a/recipes-extended/xen/xen-tools.inc b/recipes-extended/xen/xen-tools.inc
+index f38cabc2..0e46f289 100644
+--- a/recipes-extended/xen/xen-tools.inc
++++ b/recipes-extended/xen/xen-tools.inc
+@@ -954,3 +954,4 @@ do_deploy() {
+ # - add the task before do_build to ensure that deployment has completed when
+ #   the recipe build done stamp is written
+ addtask deploy after do_install do_populate_sysroot before do_build
++SPDX_DEPLOY_ALLOW_EMPTY:task-deploy = "1"
+-- 
+2.47.3
+
