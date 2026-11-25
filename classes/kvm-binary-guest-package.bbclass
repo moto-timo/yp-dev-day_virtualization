@@ -14,5 +14,5 @@ S = "${UNPACKDIR}"
 
 do_install () {
 	install -d ${D}${vesseldir}
-	install ${UNPACKDIR}/${VESSEL_PAYLOAD_NAME} ${D}${vesseldir}/${VESSEL_PAYLOAD_NAME}
+	install -m 0644 ${UNPACKDIR}/${VESSEL_PAYLOAD_NAME} ${D}${vesseldir}/${VESSEL_PAYLOAD_NAME}
 }
