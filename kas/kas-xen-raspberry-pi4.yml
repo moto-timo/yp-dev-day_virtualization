@@ -7,12 +7,12 @@ target:
    - multiconfig:xen-guest:xen-guest-image-minimal
    - xen-image-minimal
 
-repos:
-  meta-virtualization:
-    patches:
-      0001:
-        repo: meta-custom
-        path: kas/0001-xen-rpi-u-boot-scr-WORKDIR-UNPACKDIR-transition.patch
+#repos:
+#  meta-virtualization:
+#    patches:
+#      0001:
+#        repo: meta-custom
+#        path: kas/0001-xen-rpi-u-boot-scr-WORKDIR-UNPACKDIR-transition.patch
 
 local_conf_header:
   tmp_xen_host: |
