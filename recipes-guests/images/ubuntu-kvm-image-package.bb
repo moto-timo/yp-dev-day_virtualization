@@ -6,12 +6,12 @@ LIC_FILES_CHKSUM = "file://${YPDD_LICENSE_DIR}/LicenseRef-Ubuntu-Cloud-Image;md5
 
 inherit kvm-binary-guest-package
 
-# precise, xenial and bionic do not have kvm images
-# eoan, focal and groovy do
+# Ubuntu stopped publishing the -disk-kvm.img variant after jammy (22.04);
+# the generic cloud image is a qcow2 disk that boots under KVM.
 UBUNTU_BASE_URL ??= "https://cloud-images.ubuntu.com"
-UBUNTU_RELEASE ??= "jammy"
+UBUNTU_RELEASE ??= "resolute"
 UBUNTU_IMAGE_ARCH ??= "amd64"
-UBUNTU_IMAGE_BASENAME ?= "${UBUNTU_RELEASE}-server-cloudimg-${UBUNTU_IMAGE_ARCH}-disk-kvm"
+UBUNTU_IMAGE_BASENAME ?= "${UBUNTU_RELEASE}-server-cloudimg-${UBUNTU_IMAGE_ARCH}"
 UBUNTU_IMAGE_NAME ?= "${UBUNTU_IMAGE_BASENAME}.img"
 UBUNTU_MANIFEST_NAME ?= "${UBUNTU_IMAGE_BASENAME}.manifest"
 UBUNTU_IMAGE_DATE ?= "current"
