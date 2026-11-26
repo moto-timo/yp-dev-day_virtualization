@@ -1,0 +1,28 @@
+From ed2feef3332bea321192b12ee2ab04bc63cbd588 Mon Sep 17 00:00:00 2001
+From: Tim Orling <tim.orling@konsulko.com>
+Date: Wed, 25 Nov 2026 17:24:44 -0800
+Subject: [PATCH] ti-core-initramfs: drop ';' from IMAGE_PREPROCESS_COMMAND
+
+IMAGE_PREPROCESS_COMMAND is a space-separated list of functions, so the
+trailing ';' makes image.bbclass warn and keeps deploy_verity_hash out
+of the task signature. Changes to it then do not trigger a rebuild.
+
+AI-Generated: Uses Claude Code (Claude Opus 5.5)
+Signed-off-by: Tim Orling <tim.orling@konsulko.com>
+---
+ .../recipes-ti/initramfs/ti-core-initramfs.bbappend             | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meta-ti-bsp/dynamic-layers/security-layer/recipes-ti/initramfs/ti-core-initramfs.bbappend b/meta-ti-bsp/dynamic-layers/security-layer/recipes-ti/initramfs/ti-core-initramfs.bbappend
+index 25fe775f..b22675a9 100644
+--- a/meta-ti-bsp/dynamic-layers/security-layer/recipes-ti/initramfs/ti-core-initramfs.bbappend
++++ b/meta-ti-bsp/dynamic-layers/security-layer/recipes-ti/initramfs/ti-core-initramfs.bbappend
+@@ -22,4 +22,4 @@ deploy_verity_hash() {
+ }
+ 
+ 
+-IMAGE_PREPROCESS_COMMAND += "deploy_verity_hash;"
++IMAGE_PREPROCESS_COMMAND += "deploy_verity_hash"
+-- 
+2.47.3
+

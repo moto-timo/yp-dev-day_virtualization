@@ -10,6 +10,11 @@ repos:
       meta-beagle:
       meta-ti-bsp:
       meta-ti-extras:
+    patches:
+      # Pending upstream in meta-ti; drop once merged
+      0006:
+        repo: meta-custom
+        path: kas/patches/0006-ti-core-initramfs-drop-from-IMAGE_PREPROCESS_COMMAND.patch
 
 local_conf_header:
   meta-ti_udev-aragoconf: |
