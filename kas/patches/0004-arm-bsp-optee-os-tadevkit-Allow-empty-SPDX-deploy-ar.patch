@@ -1,0 +1,38 @@
+From 5834bf8befd5219a28a43a001403de61b2fca9ef Mon Sep 17 00:00:00 2001
+From: Tim Orling <tim.orling@konsulko.com>
+Date: Wed, 25 Nov 2026 17:05:52 -0800
+Subject: [PATCH 4/5] arm-bsp/optee-os-tadevkit: Allow empty SPDX deploy
+ artifacts
+
+OE-Core commit 1b77fe51ec ("spdx: Add ability for deploy tasks to
+create SPDX") makes an empty do_deploy an error unless
+SPDX_DEPLOY_ALLOW_EMPTY is set. Commit 43f47aac only fixed the 4.11.0
+recipe.
+
+This was hit when the meta-ti optee-os-tadevkit bbappend sets
+PV = "4.11.0+git" on all tadevkit recipes. With meta-arm-bsp enabled,
+bitbake picked the 4.10.0 recipe for a TI machine (beagleplay) and
+do_deploy failed with "No deployed artifacts found".
+
+AI-Generated: Uses Claude Code (Claude Opus 5.5)
+Signed-off-by: Tim Orling <tim.orling@konsulko.com>
+---
+ meta-arm-bsp/recipes-security/optee/optee-os-tadevkit_4.10.0.bb | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/meta-arm-bsp/recipes-security/optee/optee-os-tadevkit_4.10.0.bb b/meta-arm-bsp/recipes-security/optee/optee-os-tadevkit_4.10.0.bb
+index cca9f62a..d4e8c81f 100644
+--- a/meta-arm-bsp/recipes-security/optee/optee-os-tadevkit_4.10.0.bb
++++ b/meta-arm-bsp/recipes-security/optee/optee-os-tadevkit_4.10.0.bb
+@@ -19,6 +19,8 @@ do_deploy() {
+ 	echo "Do not inherit do_deploy from optee-os."
+ }
+ 
++SPDX_DEPLOY_ALLOW_EMPTY:task-deploy = "1"
++
+ FILES:${PN} = "${includedir}/optee/"
+ 
+ # Build paths are currently embedded
+-- 
+2.47.3
+

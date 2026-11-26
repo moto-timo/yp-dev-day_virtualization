@@ -1,0 +1,33 @@
+From 767f3689988ecaf1311d807ccfbdeb655d628fcf Mon Sep 17 00:00:00 2001
+From: Tim Orling <tim.orling@konsulko.com>
+Date: Wed, 25 Nov 2026 17:05:52 -0800
+Subject: [PATCH 5/5] arm/optee-os-tadevkit: Allow empty SPDX deploy artifacts
+ for the git recipe
+
+OE-Core commit 1b77fe51ec ("spdx: Add ability for deploy tasks to
+create SPDX") makes an empty do_deploy an error unless
+SPDX_DEPLOY_ALLOW_EMPTY is set. Commit 43f47aac only fixed the 4.11.0
+recipe, so set it for the git recipe as well.
+
+AI-Generated: Uses Claude Code (Claude Opus 5.5)
+Signed-off-by: Tim Orling <tim.orling@konsulko.com>
+---
+ meta-arm/recipes-security/optee/optee-os-tadevkit_git.bb | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/meta-arm/recipes-security/optee/optee-os-tadevkit_git.bb b/meta-arm/recipes-security/optee/optee-os-tadevkit_git.bb
+index 64765df0..c9387a20 100644
+--- a/meta-arm/recipes-security/optee/optee-os-tadevkit_git.bb
++++ b/meta-arm/recipes-security/optee/optee-os-tadevkit_git.bb
+@@ -19,6 +19,8 @@ do_deploy() {
+ 	echo "Do not inherit do_deploy from optee-os."
+ }
+ 
++SPDX_DEPLOY_ALLOW_EMPTY:task-deploy = "1"
++
+ FILES:${PN} = "${includedir}/optee/"
+ 
+ # Build paths are currently embedded
+-- 
+2.47.3
+

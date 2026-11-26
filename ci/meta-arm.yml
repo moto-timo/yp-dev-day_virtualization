@@ -10,3 +10,11 @@ repos:
       meta-arm:
       meta-arm-bsp:
       meta-arm-toolchain:
+    patches:
+      # Pending upstream in meta-arm; drop once merged
+      0004:
+        repo: meta-custom
+        path: kas/patches/0004-arm-bsp-optee-os-tadevkit-Allow-empty-SPDX-deploy-ar.patch
+      0005:
+        repo: meta-custom
+        path: kas/patches/0005-arm-optee-os-tadevkit-Allow-empty-SPDX-deploy-artifa.patch
