@@ -8,3 +8,10 @@ header:
     - ci/meta-ti.yml
 
 machine: beagleplay
+
+repos:
+  meta-arm:
+    layers:
+      # meta-ti only needs meta-arm; meta-arm-bsp's optee-os-tadevkit_4.10.0
+      # gets the same PV from meta-ti's bbappend and wins the tie
+      meta-arm-bsp: disabled
